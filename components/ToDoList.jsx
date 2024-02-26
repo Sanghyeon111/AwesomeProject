@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,18 +6,25 @@ import {
   Pressable,
   View,
   Text,
-} from 'react-native';
+} from "react-native";
 
-function ToDoList(props) {
+function ToDoList({ tasks }) {
   return (
     <>
       <ScrollView>
         <Pressable>
-          <View style={[styles.task, styles.completed]}>
-            <Text style={styles.taskText}>Do laundry</Text>
-          </View>
+          {tasks.map((task, index) => {
+            return (
+              <View
+                style={[styles.task, index % 2 == 1 && styles.completed]}
+                key={index}
+              >
+                <Text style={styles.taskText}>{task}</Text>
+              </View>
+            );
+          })}
         </Pressable>
-        <Pressable>
+        {/* <Pressable>
           <View style={[styles.task]}>
             <Text style={styles.taskText}>Go to gym</Text>
           </View>
@@ -26,7 +33,7 @@ function ToDoList(props) {
           <View style={[styles.task, styles.completed]}>
             <Text style={styles.taskText}>Walk dog</Text>
           </View>
-        </Pressable>
+        </Pressable> */}
       </ScrollView>
     </>
   );
@@ -36,10 +43,10 @@ const styles = StyleSheet.create({
   task: {
     padding: 10,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: "#ccc",
   },
   completed: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: "#e0e0e0",
   },
   taskText: {
     fontSize: 16,
