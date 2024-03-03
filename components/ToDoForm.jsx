@@ -9,21 +9,17 @@ import {
   Text,
 } from "react-native";
 
-function ToDoForm({ tasks, setTasks }) {
+function ToDoForm({ addTask }) {
   const [taskInput, setTaskInput] = useState(null);
 
-  const addTask = (newTask) => {
-    setTasks([...tasks, newTask]);
-  };
   const handleInputChange = (text) => {
-    setTaskInput(text);
+    setTaskInput((previousText) => text);
   };
   const handleAddTask = () => {
     // Add the new task to the tasks array
     addTask(taskInput);
-
     // Clear the input field after adding the task
-    setTaskInput("");
+    setTaskInput((previousText) => "");
   };
   return (
     <>

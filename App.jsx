@@ -11,12 +11,14 @@ import ToDoForm from "./components/ToDoForm";
 
 function App() {
   const [tasks, setTasks] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-
-  console.log(tasks);
+  const handleAddTask = (newTask) => {
+    //setTasks((previousTasks) => [...tasks, newTask]);
+    setTasks(tasks.concat(newTask));
+  };
   return (
     <SafeAreaView>
       <ToDoList tasks={tasks} />
-      <ToDoForm tasks={tasks} setTasks={setTasks} />
+      <ToDoForm addTask={handleAddTask} />
     </SafeAreaView>
   );
 }

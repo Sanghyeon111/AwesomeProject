@@ -13,27 +13,17 @@ function ToDoList({ tasks }) {
     <>
       <ScrollView>
         <Pressable>
-          {tasks.map((task, index) => {
+          {tasks.map((task, key) => {
             return (
               <View
-                style={[styles.task, index % 2 == 1 && styles.completed]}
-                key={index}
+                style={[styles.task, key % 2 == 1 && styles.completed]}
+                key={key}
               >
                 <Text style={styles.taskText}>{task}</Text>
               </View>
             );
           })}
         </Pressable>
-        {/* <Pressable>
-          <View style={[styles.task]}>
-            <Text style={styles.taskText}>Go to gym</Text>
-          </View>
-        </Pressable>
-        <Pressable>
-          <View style={[styles.task, styles.completed]}>
-            <Text style={styles.taskText}>Walk dog</Text>
-          </View>
-        </Pressable> */}
       </ScrollView>
     </>
   );
